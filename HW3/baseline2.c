@@ -114,16 +114,6 @@ int main(){
     }
 
     // DFS
-    // sort the links in tree to do DFS
-    for(int i = 0; i < Nodes_num - 2; i++){
-        for(int j = i; j < Nodes_num - 2 - i; j++){
-            if((tree[j].start > tree[j + 1].start) || (tree[j].start == tree[j + 1].start && tree[j].end > tree[j + 1].end)){
-                links temp = tree[j];
-                tree[j] = tree[j + 1];
-                tree[j + 1] = temp;
-            }
-        }
-    }
     int path[Nodes_num];
     int stack[Nodes_num];
     stack[0] = 0;
@@ -153,7 +143,8 @@ int main(){
     // UAV
     int UAV_cnt = 0;
     int path_start[Nodes_num], path_end[Nodes_num];
-    path_start[0] = path_end[0] = path[0];
+    path_start[0] = path[0];
+    path_end[0] = path[0];
     double path_len = 0;
     for(int i = 1; i < path_cnt; i++){
         double adding_distance = distance[path[i - 1]][path[i]];
@@ -163,7 +154,8 @@ int main(){
         }
         else{
             UAV_cnt++;
-            path_start[UAV_cnt] = path_end[UAV_cnt] = path[i];
+            path_start[UAV_cnt] = path[i];
+            path_end[UAV_cnt] = path[i];
             path_len = 0;
         }
     }
