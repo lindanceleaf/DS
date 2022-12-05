@@ -102,10 +102,7 @@ int main(){
     for(int i = 0; i < links_num; i++){
         int start_root = find_root(links_data[i].start, root);
         int end_root = find_root(links_data[i].end, root);
-        // if is ring then do nothing
-        if(start_root == end_root) continue;
-        // not ring then connect
-        else{
+        if(start_root != end_root){
             // union
             tree[success_links_num++] = links_data[i];
             if(start_root < end_root) root[end_root] = start_root;
