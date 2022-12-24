@@ -151,5 +151,3 @@ int main(){
         printf("%d %d\n", place[i][1], place[i][0]);
     }
 }
-
-// 1400多
